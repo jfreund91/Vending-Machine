@@ -11,25 +11,39 @@ namespace Capstone.Classes
     { 
         
 
-        public Dictionary<string, VendingMachineItems> ReadInventory()
+        public Dictionary<string, VendingMachineItem> ReadInventory()
         {
-            Dictionary<string, VendingMachineItems> inventory = new Dictionary<string, VendingMachineItems>();
-
-            using (StreamReader sr = new StreamReader(@"\Users\Mariah Dawson\Pairs\c-module-1-capstone-team-4\Capstone\Classes\vendingmachine.csv"))
+            Dictionary<string, VendingMachineItem> inventory = new Dictionary<string, VendingMachineItem>();
+            
+            using (StreamReader sr = new StreamReader("vendingmachine.csv"))
             {
                 while(!sr.EndOfStream)
                 {
                     string line = sr.ReadLine();
-                    string[] values = line.Split('|');
+                    string[] value = line.Split('|');
 
-                    if (values[3] == "Chip")
+                    if (value[3] == "Chip")
                     {
-                        ChipsType chip = new ChipsType(values[0], values[1], decimal.Parse(values[2]), values[3]);
-                        inventory.Add(values[0], chip);
+                        ChipType chip = new ChipType(value[0], value[1], decimal.Parse(value[2]));
+                        inventory.Add(value[0], chip);
                     }
-                    //...
+                    if(value[3] == "Candy" )
+                    {
+                        CandyType candy = new CandyType(value[0], value[1], decimal.Parse(value[2]));
+                        inventory.Add(value[0], candy);
+                    }
+                    if (value[3] == "Drink")
+                    {
+                       DrinkType drink = new DrinkType(value[0], value[1], decimal.Parse(value[2]));
+                        inventory.Add(value[0], drink);
+                    }
+                    if (value[3] == "Gum")
+                    {
+                        GumType gum = new GumType(value[0], value[1], decimal.Parse(value[2]));
+                        inventory.Add(value[0], gum);
+                    }
 
-                   
+
                 }
 
 

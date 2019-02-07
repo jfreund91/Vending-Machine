@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace Capstone.Classes
 {
@@ -8,35 +9,46 @@ namespace Capstone.Classes
     {
         public decimal Balance { get; private set; }
 
-        private Dictionary<string, object> stock { get; }
-
-        public string Slots
+        private Dictionary<string, VendingMachineItem> stock;
+        
+        public List<VendingMachineItem> Cart { get; private set; }
+        public decimal Change
         {
             get
             {
-                return null;
+                return 0;
             }
         }
 
-        public void DisplayItems()
+        public string[] Slots
         {
-        
+            get
+            {
+                return stock.Keys.ToArray();
+            }
         }
 
-        public void Purchase()
+        public VendingMachineItem SeeItemAt(string slot)
         {
-
+            return stock[slot];
         }
+
 
         public void FeedMoney(decimal dollars)
         {
+            this.Balance += dollars;
         }
 
 
-        public VendingMachineBrain(Dictionary<string, object> inventory)
+        public VendingMachineBrain(Dictionary<string, VendingMachineItem> inventory)
         {
+            this.Balance = 0;
+            this.stock = inventory;
+            
+
             
         }
+        
 
 
     }

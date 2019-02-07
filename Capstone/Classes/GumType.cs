@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Capstone.Classes
 {
-    public class GumType :VendingMachineItems
+    public class GumType :VendingMachineItem
     {
         
         public override string ConsumedSound()
@@ -12,8 +12,8 @@ namespace Capstone.Classes
             return "Chew,Chew, Yum!";
         }
 
-        public GumType(string location, string productName, decimal price, string productType)
-            : base(location, productName, price, productType)
+        public GumType(string location, string productName, decimal price)
+            : base(location, productName, price)
         {
 
         }

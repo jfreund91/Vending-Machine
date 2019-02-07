@@ -9,9 +9,9 @@ namespace Capstone
         static void Main(string[] args)
         {
             InventoryReader inventoryReader = new InventoryReader();
-            Dictionary<string, VendingMachineItems> inventory = inventoryReader.ReadInventory();
-
-            MainMenu menu = new MainMenu();
+            Dictionary<string, VendingMachineItem> inventory = inventoryReader.ReadInventory();
+            VendingMachineBrain vm = new VendingMachineBrain(inventory);
+            MainMenu menu = new MainMenu(vm);
             menu.Run();
         }
     }

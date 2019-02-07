@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Capstone.Classes
 {
-    class ChipsType:VendingMachineItems
+    class ChipType:VendingMachineItem
     {
          
         public override string ConsumedSound()
@@ -12,8 +12,8 @@ namespace Capstone.Classes
             return "Crunch,Crunch, Yum!";
         }
 
-        public ChipsType(string location, string productName, decimal price, string productType)
-            : base(location, productName, price, productType)
+        public ChipType(string location, string productName, decimal price)
+            : base(location, productName, price)
         {
 
         }
