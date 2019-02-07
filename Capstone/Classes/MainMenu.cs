@@ -45,7 +45,7 @@ namespace Capstone.Classes
                     foreach(string slot in slots)
                     {
                         VendingMachineItem currentItem = vm.SeeItemAt(slot);
-                        Console.WriteLine($"{currentItem.Location}   ||   {currentItem.ProductName.PadRight(20)}   ||  {currentItem.Price:C}");
+                        Console.WriteLine($"{currentItem.Location}   ||   {currentItem.ProductName.PadRight(20)}   ||  {currentItem.Price:C}  || {currentItem.Quantity}");
                         
                     }
                    

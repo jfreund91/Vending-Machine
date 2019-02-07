@@ -12,7 +12,7 @@ namespace Capstone.Classes
         {
             while (true)
             {
-                Console.Clear();
+                //Console.Clear();
                 Console.WriteLine("Purchase Menu:");
                 Console.WriteLine("(1) Feed Money");
                 Console.WriteLine("(2) Select Product");
@@ -30,10 +30,20 @@ namespace Capstone.Classes
                 }
                 else if (choice == "2")
                 {
+                    Console.Clear();
                     Console.WriteLine("Enter your selection slot:");
                     string selection = Console.ReadLine();
-
-
+                    if (vm.Balance >= vm.SeeItemAt(selection).Price)
+                    {
+                        vm.SeeItemAt(selection).RemoveItem();
+                        Console.WriteLine("Your item has been dispense.THANK YOU!");
+                        Console.ReadLine();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please enter more money");
+                        Console.ReadLine();
+                    }
                 }
                 else if (choice == "3")
                 {

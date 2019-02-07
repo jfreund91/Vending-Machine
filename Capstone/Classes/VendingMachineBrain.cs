@@ -45,8 +45,6 @@ namespace Capstone.Classes
             this.Balance = 0;
             this.stock = inventory;
             
-
-            
         }
         
 

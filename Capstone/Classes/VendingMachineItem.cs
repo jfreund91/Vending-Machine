@@ -18,7 +18,14 @@ namespace Capstone.Classes
 
         public void RemoveItem()
         {
-            this.Quantity--;
+            if (this.Quantity == 0)
+            {
+                Console.WriteLine("SOLD OUT");
+            }
+            else
+            {
+                this.Quantity--;
+            }
         }
 
         public virtual string ConsumedSound()
