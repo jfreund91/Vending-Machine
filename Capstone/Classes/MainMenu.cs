@@ -48,7 +48,6 @@ namespace Capstone.Classes
                         Console.WriteLine($"{currentItem.Location}   ||   {currentItem.ProductName.PadRight(20)}   ||  {currentItem.Price:C}  || {currentItem.Quantity}");
                         
                     }
-                   
                  
                 }
                 else if (choice == "2")

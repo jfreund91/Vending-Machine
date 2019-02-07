@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Linq;
 namespace Capstone.Classes
 {
     public class PurchaseMenu
@@ -18,6 +18,9 @@ namespace Capstone.Classes
                 Console.WriteLine("(2) Select Product");
                 Console.WriteLine("(3) Finish Transaction");
                 Console.WriteLine($"Current Money Provided: {vm.Balance:C}");
+                //visual of added items in cart
+                //DisplayCart();
+
                 Console.WriteLine("(Q) Quit ");
                 string choice = Console.ReadLine();
 
@@ -33,16 +36,22 @@ namespace Capstone.Classes
                     Console.Clear();
                     Console.WriteLine("Enter your selection slot:");
                     string selection = Console.ReadLine();
-                    if (vm.Balance >= vm.SeeItemAt(selection).Price)
+
+                    if (vm.Balance >= vm.SeeItemAt(selection).Price&& vm.Slots.Contains(selection))
                     {
                         vm.SeeItemAt(selection).RemoveItem();
-                        Console.WriteLine("Your item has been dispense.THANK YOU!");
-                        Console.ReadLine();
+                        cartItems.Add(vm.SeeItemAt(selection));
+                        Console.WriteLine("Your item has been added to the cart.");
+                        Console.WriteLine();
+                    }
+                    else if(vm.Slots.Contains(selection)&& vm.Balance < vm.SeeItemAt(selection).Price)
+                    {
+                        Console.WriteLine("Please enter more money");
+                        Console.WriteLine();
                     }
                     else
                     {
-                        Console.WriteLine("Please enter more money");
-                        Console.ReadLine();
+                        Console.WriteLine("Invalid Selection");
                     }
                 }
                 else if (choice == "3")

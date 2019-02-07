@@ -39,6 +39,13 @@ namespace Capstone.Classes
             this.Balance += dollars;
         }
 
+        public void DisplayCartItems()
+        {
+            //foreach (VendingMachineItem item in Cart)
+            //{
+            //    Console.WriteLine($"{item.ProductName}=={item.Price}");
+            //}
+        }
 
         public VendingMachineBrain(Dictionary<string, VendingMachineItem> inventory)
         {
