@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Capstone.Classes
 {
-   abstract class VendingMachineItems
+   public class VendingMachineItems
     {
         public string Location { get; private set; }
         
@@ -21,8 +21,19 @@ namespace Capstone.Classes
             this.Quantity--;
         }
 
-        public abstract string ConsumedSound();
+        public virtual string ConsumedSound()
+        {
+            return null;
+        }
   
+        public VendingMachineItems(string location, string productName, decimal price, string productType)
+        {
+            this.Location = location;
+            this.ProductName = productName;
+            this.Price = price;
+            this.ProductType = productType;
 
+            this.Quantity = 5;
+        }
     }
 }

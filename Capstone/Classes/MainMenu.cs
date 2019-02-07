@@ -38,16 +38,6 @@ namespace Capstone.Classes
                 if (choice == "1")
                 {
                     //TODO display menu vending machine class
-                    using (StreamReader sr = new StreamReader(@"\Users\Mariah Dawson\Pairs\c-module-1-capstone-team-4\Capstone\Classes\vendingmachine.csv"))
-                    {
-                        while (!sr.EndOfStream)
-                        {
-                            string line = sr.ReadLine();
-                            Console.WriteLine(line);
-
-                        }
-                    }
-
                 }
                 if (choice == "2")
                 {

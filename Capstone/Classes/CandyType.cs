@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Capstone.Classes
 {
-    public class CandyType : VendingMachineItems
+    public class CandyType : VendingMachineItem
     {
         public override string ConsumedSound()
         {
