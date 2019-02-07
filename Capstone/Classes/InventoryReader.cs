@@ -7,18 +7,25 @@ using System.Linq;
 namespace Capstone.Classes
 {
     public class InventoryReader
+
     {
+        public Dictionary<string,VendingMachineItems> Inventory { get; private set; }
+
         public static void ReadInventory()
         {
-            using (StreamReader sr = new StreamReader("vendingmachine.csv"))
+            using (StreamReader sr = new StreamReader(@"\Users\Mariah Dawson\Pairs\c-module-1-capstone-team-4\Capstone\Classes\vendingmachine.csv"))
             {
                 while(!sr.EndOfStream)
                 {
                     string line = sr.ReadLine();
-                    Console.WriteLine(line);
+                    string[] values = line.Split('|');
 
                 }
+
+
             }
         }
+
+
     }
 }
