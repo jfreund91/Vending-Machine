@@ -25,8 +25,7 @@ namespace Capstone.Classes
             catch(IOException ex)
             {
                 Console.WriteLine($"Error writing to log: {ex.Message}"); 
-            }
-            
+            }          
         }
         /// <summary>
         /// Logs the transactions.
@@ -41,7 +40,7 @@ namespace Capstone.Classes
                     {
                         sw.WriteLine($"{DateTime.Now,-5} {item.ProductName} {item.Location,-10} {vm.Balance,-10:C2} {vm.Balance - item.Price:C2}");
                     }
-                    sw.WriteLine($"{DateTime.Now,-5} GIVE CHANGE      {vm.Balance - vm.GrandTotal:C2}       $0.00");
+                    sw.WriteLine($"{DateTime.Now,-5} GIVE CHANGE       {vm.Balance - vm.GrandTotal:C2}       $0.00");
                 }
             }
             catch (IOException ex)

@@ -24,7 +24,7 @@ namespace Capstone.Classes
                 Console.WriteLine("(2) Select Product");
                 Console.WriteLine("(3) Finish Transaction");
                 Console.WriteLine($"Current Money Provided: {vm.Balance:C}");
-                Console.WriteLine($"Grand Total in cart: {vm.GrandTotal}");
+                Console.WriteLine($"Grand Total in cart: {vm.GrandTotal:C}");
                 Console.WriteLine("(Q) Quit ");
                 string choice = Console.ReadLine();
 
@@ -33,10 +33,20 @@ namespace Capstone.Classes
                     Console.Clear();
                     vm.DisplayStock();
                     Console.WriteLine("Enter the amount you'd like to add(In Dollars, No Change!):");
-                    decimal dollars = decimal.Parse(Console.ReadLine());
-                    vm.FeedMoney(dollars);
-                    log.InputLog(dollars);
-                    Console.Clear();
+                    string input = Console.ReadLine();
+                    decimal dollars;
+                    bool inputToDollars = decimal.TryParse(input, out dollars);
+                    if (!inputToDollars)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Please try again, you did not enter dollar amount correctly.");
+                    }
+                    else
+                    {
+                        vm.FeedMoney(dollars);
+                        log.InputLog(dollars);
+                        Console.Clear();
+                    }
 
                 }
                 else if (choice == "2")
@@ -55,7 +65,6 @@ namespace Capstone.Classes
                     }
                     else if (vm.Slots.Contains(selection) && vm.Balance < vm.SeeItemAt(selection).Price)
                     {
-
                         Console.WriteLine("Please enter more money");
                         Console.WriteLine();
                     }
@@ -75,8 +84,6 @@ namespace Capstone.Classes
                         Console.WriteLine("Please Feed more money");
                     }
                     else
-
-
                     {
                         log.OutputLog();
                         vm.Charge();
@@ -88,7 +95,16 @@ namespace Capstone.Classes
 
                 else if (choice == "Q" || choice == "q")
                 {
-                    break;
+                    if (vm.Cart.Count > 0 && vm.Balance > 0 )
+                    {
+                        vm.Cart.Clear();
+                        vm.Change();
+                        break;
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
                 else
                 {

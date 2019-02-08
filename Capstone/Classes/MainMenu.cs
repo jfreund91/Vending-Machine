@@ -6,6 +6,9 @@ using System.IO;
 
 namespace Capstone.Classes
 {
+    /// <summary>
+    /// Represents the welcome menu the user first views.
+    /// </summary>
     public class MainMenu
     {
         private VendingMachineBrain vm;
@@ -32,10 +35,9 @@ namespace Capstone.Classes
             Console.WriteLine("||||||||PUSH|||||||||||##########|");
             Console.WriteLine("||###############################|");
             Console.WriteLine("|--------------------------------|");
-            while (true)
-            {
-                
 
+            while (true)
+            {              
                 Console.WriteLine("Please make a choice.");
                 Console.WriteLine("(1) Display Vending Machine Items");
                 Console.WriteLine("(2) Purchase");
@@ -47,7 +49,6 @@ namespace Capstone.Classes
                 {
                     Console.Clear();
                     vm.DisplayStock();
-
                 }
                 else if (choice == "2")
                 {
@@ -64,9 +65,7 @@ namespace Capstone.Classes
                     Console.WriteLine("Invalid input.");
                     Console.ReadLine();
                 }
-
             }
-
         }
         public MainMenu(VendingMachineBrain vm, Logger log)
         {        
