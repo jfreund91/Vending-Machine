@@ -49,5 +49,30 @@ namespace CapstoneTests
         }
     }
 
+    [TestClass]
+    public class AddToCartTest
+    {
+        [TestMethod]
+        public void AddToCartTest_Functional_AddedItemToCard()
+        {
+            InventoryReader inventoryReader = new InventoryReader();
+            Dictionary<string, VendingMachineItem> inventory = inventoryReader.ReadInventory();
 
+            VendingMachineBrain happyRoad = new VendingMachineBrain(inventory);
+            happyRoad.FeedMoney(5);
+            happyRoad.AddToCart("A1");
+            Assert.AreEqual(1, happyRoad.Cart.Count, "Item should be added to the shopping cart count.");
+        }
+        [TestMethod]
+        public void AddToCartTest_ReducesItemQuantity()
+        {
+            InventoryReader inventoryReader = new InventoryReader();
+            Dictionary<string, VendingMachineItem> inventory = inventoryReader.ReadInventory();
+
+            VendingMachineBrain happyRoad = new VendingMachineBrain(inventory);
+            happyRoad.FeedMoney(5);
+            happyRoad.AddToCart("A1");
+            Assert.AreEqual(4, happyRoad.SeeItemAt("A1").Quantity, "Item quantity should reduce when added to cart.");
+        }
+    }
 }
