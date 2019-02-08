@@ -4,9 +4,15 @@ using System.Text;
 
 namespace Capstone.Classes
 {
-    class ChipType:VendingMachineItem
+    /// <summary>
+    /// Represents a Chip vending machine item.
+    /// </summary>
+    class ChipType :VendingMachineItem
     {
-         
+         /// <summary>
+         /// Returns the sound chips make when they are consumed.
+         /// </summary>
+         /// <returns></returns>
         public override string ConsumedSound()
         {
             return "Crunch,Crunch, Yum!";

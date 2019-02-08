@@ -4,6 +4,9 @@ using System.Text;
 using System.Linq;
 namespace Capstone.Classes
 {
+    /// <summary>
+    /// Represents our purchase UI menu.
+    /// </summary>
     public class PurchaseMenu
     {
         private VendingMachineBrain vm;

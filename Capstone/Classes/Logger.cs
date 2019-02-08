@@ -9,7 +9,10 @@ namespace Capstone.Classes
     public class Logger
     {
         public VendingMachineBrain vm;
-
+        /// <summary>
+        /// Logs the FeedMoney() method activities.
+        /// </summary>
+        /// <param name="dollars"></param>
         public void InputLog(decimal dollars)
         {
             try
@@ -25,7 +28,9 @@ namespace Capstone.Classes
             }
             
         }
-
+        /// <summary>
+        /// Logs the transactions.
+        /// </summary>
         public void OutputLog()
         {
             try
@@ -44,7 +49,6 @@ namespace Capstone.Classes
                 Console.WriteLine($"ERROR: {ex.Message}");
             }
         }
-
         public Logger(VendingMachineBrain vm)
         {
             this.vm = vm;

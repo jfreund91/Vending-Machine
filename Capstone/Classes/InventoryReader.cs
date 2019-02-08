@@ -11,6 +11,10 @@ namespace Capstone.Classes
     /// </summary>
     public class InventoryReader
     { 
+        /// <summary>
+        /// Creates a dictionary to use as stock for the VendingMachineBrain.
+        /// </summary>
+        /// <returns></returns>
         public Dictionary<string, VendingMachineItem> ReadInventory()
         {
             Dictionary<string, VendingMachineItem> inventory = new Dictionary<string, VendingMachineItem>();

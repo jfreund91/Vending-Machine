@@ -4,9 +4,15 @@ using System.Text;
 
 namespace Capstone.Classes
 {
+    /// <summary>
+    /// Represents a Gum vending machine item.
+    /// </summary>
     public class GumType :VendingMachineItem
     {
-        
+        /// <summary>
+        /// Returns the sound a gum item makes when consumed.
+        /// </summary>
+        /// <returns></returns>
         public override string ConsumedSound()
         {
             return "Chew,Chew, Yum!";
