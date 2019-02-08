@@ -48,6 +48,22 @@ namespace Capstone.Classes
                 Console.WriteLine($"ERROR: {ex.Message}");
             }
         }
+
+        public void SalesAudit()
+        {
+            using (StreamWriter sw = new StreamWriter("SalesAudit.txt", true))
+            {
+                decimal runningTotal = 0;
+                foreach(KeyValuePair <VendingMachineItem,int> kvp in vm.SalesLog)
+                {
+                    decimal costs = kvp.Key.Price;
+                    int numberSold = kvp.Value;
+                    runningTotal += numberSold * costs;
+                    sw.WriteLine($"{kvp.Key} | {kvp.Value}");
+                }
+                sw.WriteLine($"{runningTotal:C}");
+            }
+        }
         public Logger(VendingMachineBrain vm)
         {
             this.vm = vm;

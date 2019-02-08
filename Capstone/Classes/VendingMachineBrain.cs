@@ -18,6 +18,19 @@ namespace Capstone.Classes
         /// Represents the stock of the Vending Machine.
         /// </summary>
         private Dictionary<string, VendingMachineItem> stock;
+
+        public Dictionary<VendingMachineItem, int> SalesLog
+        {
+            get
+            {
+                foreach (KeyValuePair<string, VendingMachineItem> kvp in stock)
+                {
+                    SalesLog.Add(kvp.Value, 0);
+                }
+                return SalesLog;
+            }
+        }
+
         /// <summary>
         /// Represents the total cost of all the items in the Cart.
         /// </summary>
@@ -110,9 +123,10 @@ namespace Capstone.Classes
         /// Clears the current cart items.
         /// </summary>
         public void ClearCart()
-        {
+        {       
             foreach (VendingMachineItem item in Cart)
             {
+                SalesLog[item]++;
                 Console.WriteLine(item.ConsumedSound());
             }
             Cart.Clear();
