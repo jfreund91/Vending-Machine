@@ -6,6 +6,10 @@ namespace Capstone
 {
     class Program
     {
+        /// <summary>
+        /// Vending machine program.
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             InventoryReader inventoryReader = new InventoryReader();
