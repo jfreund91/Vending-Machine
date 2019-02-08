@@ -89,6 +89,7 @@ namespace Capstone.Classes
                         vm.Charge();
                         vm.Change();
                         vm.ClearCart();
+                        log.SalesAudit();
                         Console.WriteLine();
                     }
                 }

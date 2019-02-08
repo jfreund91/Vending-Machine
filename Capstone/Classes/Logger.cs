@@ -51,15 +51,16 @@ namespace Capstone.Classes
 
         public void SalesAudit()
         {
-            using (StreamWriter sw = new StreamWriter("SalesAudit.txt", true))
+            using (StreamWriter sw = new StreamWriter("SalesAudit.txt"))
             {
                 decimal runningTotal = 0;
                 foreach(KeyValuePair <VendingMachineItem,int> kvp in vm.SalesLog)
                 {
-                    decimal costs = kvp.Key.Price;
+                    VendingMachineItem item = kvp.Key;
+                    decimal costs = item.Price;
                     int numberSold = kvp.Value;
                     runningTotal += numberSold * costs;
-                    sw.WriteLine($"{kvp.Key} | {kvp.Value}");
+                    sw.WriteLine($"{item.ProductName} | {kvp.Value}");
                 }
                 sw.WriteLine($"{runningTotal:C}");
             }

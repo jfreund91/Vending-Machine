@@ -19,17 +19,15 @@ namespace Capstone.Classes
         /// </summary>
         private Dictionary<string, VendingMachineItem> stock;
 
+        private Dictionary<VendingMachineItem, int> salesLog;
+
         public Dictionary<VendingMachineItem, int> SalesLog
         {
             get
             {
-                foreach (KeyValuePair<string, VendingMachineItem> kvp in stock)
-                {
-                    SalesLog.Add(kvp.Value, 0);
-                }
-                return SalesLog;
+                return salesLog;
             }
-        }
+        }  
 
         /// <summary>
         /// Represents the total cost of all the items in the Cart.
@@ -126,7 +124,7 @@ namespace Capstone.Classes
         {       
             foreach (VendingMachineItem item in Cart)
             {
-                SalesLog[item]++;
+                salesLog[item]++;
                 Console.WriteLine(item.ConsumedSound());
             }
             Cart.Clear();
@@ -139,6 +137,12 @@ namespace Capstone.Classes
         {
             this.Balance = 0;
             this.stock = inventory;
+
+            this.salesLog = new Dictionary<VendingMachineItem, int>();
+            foreach (KeyValuePair<string, VendingMachineItem> kvp in stock)
+            {
+                salesLog.Add(kvp.Value, 0);
+            }       
         }
         /// <summary>
         /// This method charges the Balance for the total of the items to purchase.
