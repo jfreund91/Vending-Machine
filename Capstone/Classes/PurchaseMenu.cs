@@ -23,63 +23,72 @@ namespace Capstone.Classes
                 Console.WriteLine("(Q) Quit ");
                 string choice = Console.ReadLine();
 
-                if (choice == "1")
-                {
-                    Console.WriteLine("Enter the amount you'd like to add(In Dollars, No Change!):");
-                    decimal dollars= decimal.Parse(Console.ReadLine());
-                    vm.FeedMoney(dollars);
-                    log.InputLog(dollars);
+                //try {
 
-                }
-                else if (choice == "2")
-                {
-                    Console.Clear();
-
-                    string[] slots = vm.Slots;
-                    foreach (string slot in slots)
+                    if (choice == "1")
                     {
-                        VendingMachineItem currentItem = vm.SeeItemAt(slot);
-                        Console.WriteLine($"{currentItem.Location}   ||   {currentItem.ProductName.PadRight(20)}   ||  {currentItem.Price:C}  || {currentItem.Quantity}");
+                        Console.WriteLine("Enter the amount you'd like to add(In Dollars, No Change!):");
+                        decimal dollars = decimal.Parse(Console.ReadLine());
+                        vm.FeedMoney(dollars);
+                        log.InputLog(dollars);
 
                     }
-                    Console.WriteLine("Enter your selection slot:");
-                    string selection = Console.ReadLine().ToUpper();
-
-                    if (vm.Balance >= vm.SeeItemAt(selection).Price&& vm.Slots.Contains(selection))
-                    {          
-                        vm.AddToCart(selection);
-                    }
-                    else if(vm.Slots.Contains(selection)&& vm.Balance < vm.SeeItemAt(selection).Price)
+                    else if (choice == "2")
                     {
-                        Console.WriteLine("Please enter more money");
+                        Console.Clear();
+
+                        string[] slots = vm.Slots;
+                        foreach (string slot in slots)
+                        {
+                            VendingMachineItem currentItem = vm.SeeItemAt(slot);
+                            Console.WriteLine($"{currentItem.Location}   ||   {currentItem.ProductName.PadRight(20)}   ||  {currentItem.Price:C}  || {currentItem.Quantity}");
+
+                        }
+                        Console.WriteLine("Enter your selection slot:");
+                        string selection = Console.ReadLine().ToUpper();
+
+                        if (vm.Balance >= vm.SeeItemAt(selection).Price && vm.Slots.Contains(selection))
+                        {
+                            vm.AddToCart(selection);
+                        }
+                        else if (vm.Slots.Contains(selection) && vm.Balance < vm.SeeItemAt(selection).Price)
+                        {
+
+                            Console.WriteLine("Please enter more money");
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Selection");
+                        }
+                    }
+                    else if (choice == "3")
+                    {
+                        Console.Clear();
+                        vm.DisplayCartItems();
+                        log.OutputLog();
+                        vm.Charge();
+                        vm.Change();
+                        vm.ClearCart();
                         Console.WriteLine();
+
+                    }
+                    else if (choice == "Q" || choice == "q")
+                    {
+                        break;
                     }
                     else
                     {
-                        Console.WriteLine("Invalid Selection");
+                        Console.WriteLine("Invalid Input");
+                        Console.ReadLine();
                     }
-                }
-                else if (choice == "3")
-                {
-                    Console.Clear();
-                    vm.DisplayCartItems();                   
-                    log.OutputLog();
-                    vm.Charge();
-                    vm.Change();
-                    vm.ClearCart();
-                    Console.WriteLine();
-
-                }
-                else if (choice == "Q" || choice == "q")
-                {
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid Input");
-                    Console.ReadLine();
-                }
-            }
+                //}
+                //catch (Exception ex)
+                //{
+                //    Console.WriteLine(ex.Message);
+                //    break;
+                //}
+             }
         }
        
         public PurchaseMenu(VendingMachineBrain vm, Logger log)
