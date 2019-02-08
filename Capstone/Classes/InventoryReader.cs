@@ -7,10 +7,7 @@ using System.Linq;
 namespace Capstone.Classes
 {
     public class InventoryReader
-
     { 
-        
-
         public Dictionary<string, VendingMachineItem> ReadInventory()
         {
             Dictionary<string, VendingMachineItem> inventory = new Dictionary<string, VendingMachineItem>();
@@ -42,16 +39,10 @@ namespace Capstone.Classes
                         GumType gum = new GumType(value[0], value[1], decimal.Parse(value[2]));
                         inventory.Add(value[0], gum);
                     }
-
-
                 }
-
-
             }
-
             return inventory;
         }
-
 
     }
 }

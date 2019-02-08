@@ -7,6 +7,8 @@ namespace Capstone.Classes
     public class PurchaseMenu
     {
         private VendingMachineBrain vm;
+
+        private Logger log;
        
         public void Run()
         {
@@ -24,9 +26,10 @@ namespace Capstone.Classes
                 if (choice == "1")
                 {
                     Console.WriteLine("Enter the amount you'd like to add(In Dollars, No Change!):");
-                    decimal addedMoney = decimal.Parse(Console.ReadLine());
-                    vm.FeedMoney(addedMoney);
-                    Console.WriteLine($"Added {addedMoney} to your balance.");
+                    decimal dollars= decimal.Parse(Console.ReadLine());
+                    vm.FeedMoney(dollars);
+                    log.InputLog(dollars);
+
                 }
                 else if (choice == "2")
                 {
@@ -43,11 +46,7 @@ namespace Capstone.Classes
                     string selection = Console.ReadLine().ToUpper();
 
                     if (vm.Balance >= vm.SeeItemAt(selection).Price&& vm.Slots.Contains(selection))
-                    {
-                        //vm.SeeItemAt(selection).RemoveItem();
-                        //vm.Cart.Add(vm.SeeItemAt(selection));
-                        //Console.WriteLine("Your item has been added to the cart.");
-                        //Console.WriteLine();
+                    {          
                         vm.AddToCart(selection);
                     }
                     else if(vm.Slots.Contains(selection)&& vm.Balance < vm.SeeItemAt(selection).Price)
@@ -63,10 +62,12 @@ namespace Capstone.Classes
                 else if (choice == "3")
                 {
                     Console.Clear();
-                    vm.DisplayCartItems();
+                    vm.DisplayCartItems();                   
+                    log.OutputLog();
                     vm.Charge();
                     vm.Change();
                     vm.ClearCart();
+                    Console.WriteLine();
 
                 }
                 else if (choice == "Q" || choice == "q")
@@ -81,9 +82,10 @@ namespace Capstone.Classes
             }
         }
        
-        public PurchaseMenu(VendingMachineBrain vm)
+        public PurchaseMenu(VendingMachineBrain vm, Logger log)
         {
             this.vm = vm;
+            this.log = log;
         }
     }
 

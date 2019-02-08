@@ -43,7 +43,25 @@ namespace Capstone.Classes
 
         public void FeedMoney(decimal dollars)
         {
-            this.Balance += dollars; //may need a if else or switch statement that limits the bills that can be added to the balance
+            switch(dollars)
+            {
+                case (1M):
+                    this.Balance += 1;
+                    break;
+                case (2M):
+                    this.Balance += 2;
+                    break;
+                case (5M):
+                    this.Balance += 5;
+                    break;
+                case (10M):
+                    this.Balance += 10;
+                    break;
+                default:
+                    Console.WriteLine("Invalid Entry, No MONEY ADDED.");
+                    break;
+            }
+            Console.WriteLine($"{Balance:C2} is your current balance.");
         }
 
         public void DisplayCartItems()
@@ -53,6 +71,7 @@ namespace Capstone.Classes
                 Console.WriteLine($"{item.ProductName}=={item.Price:C}");
             }
             Console.WriteLine($"Grand Total:{this.GrandTotal:C}");
+            
         }
         public void ClearCart()
         {

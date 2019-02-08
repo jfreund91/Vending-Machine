@@ -9,24 +9,29 @@ namespace Capstone.Classes
     public class MainMenu
     {
         private VendingMachineBrain vm;
+        private Logger log;
         public void Run()
-
         {
-            Console.WriteLine("WELCOME to Vendo-Matic500");
-            Console.WriteLine("________________________");
-            Console.WriteLine("||      ooOOOOoo      ||");
-            Console.WriteLine("||     0000000000     ||");
-            Console.WriteLine("||     0   00   0     ||");
-            Console.WriteLine("||     0oo0000oo0     ||");
-            Console.WriteLine("||       o0oo0o       ||");
-            Console.WriteLine("||        0000        ||");
-            Console.WriteLine("||____________________||");
-            Console.WriteLine("||____________________||");
-            Console.WriteLine("||  ====     _______  ||");
-            Console.WriteLine("||  |()|     [     ]  ||");
-            Console.WriteLine("||  ====     [_____]  ||");
-            Console.WriteLine("||____________________||");
-            Console.WriteLine("========================");
+            Console.WriteLine("====WELCOME to Vendo-Matic500====");
+            Console.WriteLine("_________________________________");
+            Console.WriteLine("|################################|");
+            Console.WriteLine("||      ooOOOOoo      |##########|");
+            Console.WriteLine("||     0000000000     |##|****|##|");
+            Console.WriteLine("||     0   00   0     |##|[  ]|##|");
+            Console.WriteLine("||     0oo0000oo0     |##########|");
+            Console.WriteLine("||       o0oo0o       |##########|");
+            Console.WriteLine("||        0000        |#|******|#|");
+            Console.WriteLine("||====================|#|      |#|");
+            Console.WriteLine("||                    |#|======|#|");
+            Console.WriteLine("||  A1|  B2 | C3 | D4 |#| [---]|#|");
+            Console.WriteLine("||====================|#|  (`) |#|");
+            Console.WriteLine("||                    |#|______|#|");
+            Console.WriteLine("||  A2 | B3 | C4 | D5 |##########|");
+            Console.WriteLine("||====================|##########|");
+            Console.WriteLine("|||||||||||||||||||||||##########|");
+            Console.WriteLine("||||||||PUSH|||||||||||##########|");
+            Console.WriteLine("||###############################|");
+            Console.WriteLine("|--------------------------------|");
             while (true)
             {
                 
@@ -52,7 +57,7 @@ namespace Capstone.Classes
                 }
                 else if (choice == "2")
                 {
-                    PurchaseMenu pm = new PurchaseMenu(vm);
+                    PurchaseMenu pm = new PurchaseMenu(vm, log);
                     pm.Run();
                 }
                 else if (choice == "Q" || choice == "q")
@@ -68,9 +73,10 @@ namespace Capstone.Classes
             }
 
         }
-        public MainMenu(VendingMachineBrain vm)
-        {
-            this.vm = vm;
+        public MainMenu(VendingMachineBrain vm, Logger log)
+        {        
+                this.vm = vm;
+                this.log = log;
         }
     }
 }

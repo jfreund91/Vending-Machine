@@ -11,7 +11,8 @@ namespace Capstone
             InventoryReader inventoryReader = new InventoryReader();
             Dictionary<string, VendingMachineItem> inventory = inventoryReader.ReadInventory();
             VendingMachineBrain vm = new VendingMachineBrain(inventory);
-            MainMenu menu = new MainMenu(vm);
+            Logger log = new Logger(vm);
+            MainMenu menu = new MainMenu(vm, log);
             menu.Run();
         }
     }
