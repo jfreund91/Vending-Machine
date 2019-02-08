@@ -10,6 +10,8 @@ namespace Capstone.Classes
         public decimal Balance { get; private set; }
 
         private Dictionary<string, VendingMachineItem> stock;
+
+        //maybe a runningPriceTotal to keep track of the grand total
         
         public List<VendingMachineItem> Cart { get; private set; }
         public decimal Change
@@ -36,7 +38,7 @@ namespace Capstone.Classes
 
         public void FeedMoney(decimal dollars)
         {
-            this.Balance += dollars;
+            this.Balance += dollars; //may need a if else or switch statement that limits the bills that can be added to the balance
         }
 
         public void DisplayCartItems()
