@@ -21,6 +21,9 @@ namespace Capstone.Classes
 
         private Dictionary<VendingMachineItem, int> salesLog;
 
+        /// <summary>
+        /// Represent the new dictionary for the Vending Machine total sales.
+        /// </summary>
         public Dictionary<VendingMachineItem, int> SalesLog
         {
             get

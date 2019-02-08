@@ -49,6 +49,9 @@ namespace Capstone.Classes
             }
         }
 
+        /// <summary>
+        /// Creates a sales log of vending machines' life.
+        /// </summary>
         public void SalesAudit()
         {
             using (StreamWriter sw = new StreamWriter("SalesAudit.txt"))

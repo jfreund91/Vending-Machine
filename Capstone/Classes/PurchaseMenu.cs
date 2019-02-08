@@ -16,8 +16,7 @@ namespace Capstone.Classes
         public void Run()
         {
             while (true)
-            {
-                //Console.Clear();
+            {            
                 vm.DisplayStock();
                 Console.WriteLine("Purchase Menu:");
                 Console.WriteLine("(1) Feed Money");
