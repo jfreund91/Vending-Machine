@@ -45,18 +45,13 @@ namespace Capstone.Classes
 
                 if (choice == "1")
                 {
-                    
-                    string[] slots = vm.Slots;
-                    foreach(string slot in slots)
-                    {
-                        VendingMachineItem currentItem = vm.SeeItemAt(slot);
-                        Console.WriteLine($"{currentItem.Location}   ||   {currentItem.ProductName.PadRight(20)}   ||  {currentItem.Price:C}  || {currentItem.Quantity}");
-                        
-                    }
-                 
+                    Console.Clear();
+                    vm.DisplayStock();
+
                 }
                 else if (choice == "2")
                 {
+                    Console.Clear();
                     PurchaseMenu pm = new PurchaseMenu(vm, log);
                     pm.Run();
                 }

@@ -73,6 +73,17 @@ namespace Capstone.Classes
             Console.WriteLine($"Grand Total:{this.GrandTotal:C}");
             
         }
+
+        public void DisplayStock()
+        {
+            string[] slots = Slots;
+            foreach (string slot in slots)
+            {
+                VendingMachineItem currentItem = SeeItemAt(slot);
+                Console.WriteLine($"{currentItem.Location}   ||   {currentItem.ProductName.PadRight(20)}   ||  {currentItem.Price:C}  || {currentItem.Quantity}");
+
+            }
+        }
         public void ClearCart()
         {
             foreach(VendingMachineItem item in Cart)
@@ -80,7 +91,7 @@ namespace Capstone.Classes
                 Console.WriteLine(item.ConsumedSound());
             }
             Cart.Clear();
-            this.Balance = 0;
+            //this.Balance = 0;
         }
         public VendingMachineBrain(Dictionary<string, VendingMachineItem> inventory)
         {
@@ -90,6 +101,7 @@ namespace Capstone.Classes
         }
         public void Charge()
         {
+            
             this.Balance -= GrandTotal;
 
         }
@@ -115,7 +127,7 @@ namespace Capstone.Classes
                 anNickle++;
             }
             Console.WriteLine($"Your change is {anQuarter} quarters, {anDime} dimes, and {anNickle} nickles.");
-
+            this.Balance = 0M;
         }
         public void AddToCart(string selection)
         {
@@ -123,6 +135,8 @@ namespace Capstone.Classes
             {
                 SeeItemAt(selection).RemoveItem();
                 Cart.Add(SeeItemAt(selection));
+
+                Console.Clear();
                 Console.WriteLine("Your item has been added to the cart.");
                 Console.WriteLine();
             }

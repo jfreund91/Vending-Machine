@@ -12,21 +12,36 @@ namespace Capstone.Classes
 
         public void InputLog(decimal dollars)
         {
-            using (StreamWriter sw = new StreamWriter("LogTEST.txt", true))
+            try
             {
-                sw.WriteLine($"{DateTime.Now, -5} FEED MONEY        {dollars,-10:C2}   {vm.Balance:C2}");
+                using (StreamWriter sw = new StreamWriter("Log.txt", true))
+                {
+                    sw.WriteLine($"{DateTime.Now,-5} FEED MONEY        {dollars,-10:C2}   {vm.Balance:C2}");
+                }
             }
+            catch(IOException ex)
+            {
+                Console.WriteLine($"Error writing to log: {ex.Message}"); 
+            }
+            
         }
 
         public void OutputLog()
         {
-            using (StreamWriter sw = new StreamWriter("LogTEST.txt", true))
-            {  
-                foreach(VendingMachineItem item in vm.Cart)
+            try
+            {
+                using (StreamWriter sw = new StreamWriter("Log.txt", true))
                 {
-                   sw.WriteLine($"{DateTime.Now, -5} {item.ProductName} {item.Location, -10} {vm.Balance,-10:C2} {vm.Balance - item.Price:C2}");
+                    foreach (VendingMachineItem item in vm.Cart)
+                    {
+                        sw.WriteLine($"{DateTime.Now,-5} {item.ProductName} {item.Location,-10} {vm.Balance,-10:C2} {vm.Balance - item.Price:C2}");
+                    }
+                    sw.WriteLine($"{DateTime.Now,-5} GIVE CHANGE      {vm.Balance - vm.GrandTotal:C2}       $0.00");
                 }
-                sw.WriteLine($"{DateTime.Now, -5} GIVE CHANGE      {vm.Balance - vm.GrandTotal:C2}       $0.00");
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine($"ERROR: {ex.Message}");
             }
         }
 
