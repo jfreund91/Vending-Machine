@@ -35,17 +35,11 @@ namespace Capstone.Classes
                     string input = Console.ReadLine();
                     decimal dollars;
                     bool inputToDollars = decimal.TryParse(input, out dollars);
-                    if (!inputToDollars)
-                    {
-                        Console.Clear();
-                        Console.WriteLine("Please try again, you did not enter dollar amount correctly.");
-                    }
-                    else
-                    {
-                        Console.Clear();
-                        vm.FeedMoney(dollars);
-                        log.InputLog(dollars);                    
-                    }
+                    
+                    Console.Clear();
+                    vm.FeedMoney(dollars);
+                    log.InputLog(dollars);                    
+                   
                 }
                 else if (choice == "2")
                 {
