@@ -42,11 +42,10 @@ namespace Capstone.Classes
                     }
                     else
                     {
-                        vm.FeedMoney(dollars);
-                        log.InputLog(dollars);
                         Console.Clear();
+                        vm.FeedMoney(dollars);
+                        log.InputLog(dollars);                    
                     }
-
                 }
                 else if (choice == "2")
                 {
